@@ -28,4 +28,4 @@ script:
   - ./gradlew check --debug --stacktrace --info
 
 after_success:
-  - ./gradlew jacocoTestReport coveralls
+  - ./gradlew cobertura coveralls
