@@ -11,6 +11,9 @@ jdk:
 
 addons:
   hostname: fluency-builder
+  apt:
+    packages:
+      - oracle-java9-installer
 
 install:
   - ./gradlew assemble -x signArchives -x uploadArchives
