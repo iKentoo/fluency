@@ -18,13 +18,10 @@ package org.komamitsu.fluency.sender;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocket;
-
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 
 public class SSLSocketBuilder
 {
@@ -46,8 +43,7 @@ public class SSLSocketBuilder
             throws IOException
     {
         try {
-            SSLContext sslContext = SSLContext.getInstance(SSL_PROTOCOL);
-            sslContext.init(null, null, new SecureRandom());
+            SSLContext sslContext = SSLContext.getDefault();
             javax.net.ssl.SSLSocketFactory socketFactory = sslContext.getSocketFactory();
             Socket socket = new Socket();
             socket.connect(new InetSocketAddress(host, port), connectionTimeoutMilli);
@@ -59,9 +55,7 @@ public class SSLSocketBuilder
         catch (NoSuchAlgorithmException e) {
             throw new IllegalStateException("Failed to get SSLContext", e);
         }
-        catch (KeyManagementException e) {
-            throw new IllegalStateException("Failed to init SSLContext", e);
-        }
+        
     }
 
     @Override

@@ -10,7 +10,7 @@ apply plugin: 'com.github.johnrengelman.shadow'
 
 group = 'org.komamitsu'
 archivesBaseName = 'fluency'
-version = '1.8.1'
+version = '1.8.2ik'
 
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
@@ -63,9 +63,6 @@ artifacts {
     archives javadocJar, sourcesJar, shadowJar
 }
 
-signing {
-    sign configurations.archives
-}
 
 uploadArchives {
     repositories {
